@@ -1,0 +1,45 @@
+<td-layout-nav navigationRoute="/">
+  <button mat-icon-button td-menu-button tdLayoutToggle>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <div td-toolbar-content layout="row" layout-align="center center" flex>
+    <span>Decision Helper</span>
+    <span flex></span>
+    <a mat-icon-button matTooltip="Docs" href="https://teradata.github.io/covalent/" target="_blank"><mat-icon>chrome_reader_mode</mat-icon></a>
+    <a mat-icon-button matTooltip="Github" href="https://github.com/teradata/covalent" target="_blank"><mat-icon svgIcon="assets:github"></mat-icon></a>
+  </div>
+  <div layout-gt-sm="row" tdMediaToggle="gt-xs" [mediaClasses]="['push-sm']">
+    <div flex-gt-sm="100">
+
+        <mat-card>
+          <mat-card-title>Decisions</mat-card-title>
+          <mat-card-subtitle>Recent decisions you have made</mat-card-subtitle>
+          <mat-divider></mat-divider>
+          <mat-nav-list class="will-load item-list">
+            <ng-template tdLoading="items.load">
+              <ng-template let-item let-last="last" ngFor [ngForOf]="items">
+                <a mat-list-item layout-align="row" [routerLink]="['../item', item.item_id]">
+                  <mat-icon matListAvatar> {{item.icon}} </mat-icon>
+                  <h3 matLine> {{item.name}} </h3>
+                  <p matLine> {{item.description | truncate:50 }} </p>
+                  <span flex></span>
+                  <span class="md-caption text-right" flex="20"> {{item.created | timeAgo }} </span>
+                </a>
+                <mat-divider *ngIf="!last" matInset></mat-divider>
+              </ng-template>
+            </ng-template>
+          </mat-nav-list>
+        </mat-card>
+
+    </div>
+  </div>
+  <td-layout-footer>
+    <div layout="row" layout-align="start center">
+      <span class="md-caption"></span>
+      <span flex></span>
+    </div>
+  </td-layout-footer>
+</td-layout-nav>
+<a mat-fab color="accent" class="mat-fab-bottom-right" [routerLink]="['add']">
+  <mat-icon>add</mat-icon>
+</a>
