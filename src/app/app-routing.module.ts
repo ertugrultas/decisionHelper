@@ -5,6 +5,7 @@ import { MainComponent } from './main/main.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DetailComponent } from './detail/detail.component';
 import { LoginComponent } from './login/login.component';
+import { DecisionComponent } from "./decision/decision.component";
 
 const routes: Routes = [
     {
@@ -23,6 +24,10 @@ const routes: Routes = [
                 path: 'item/:id',
                 component: DetailComponent
             },
+            {
+              path: 'decision',
+              component: DecisionComponent
+            },
             { path: '', loadChildren: './users/users.module#UsersModule' },
         ],
     },
@@ -39,6 +44,6 @@ const routes: Routes = [
 export class AppRoutingModule { }
 export const routedComponents: any[] = [
     MainComponent, LoginComponent,
-    DashboardComponent,
+    DashboardComponent,DecisionComponent,
     DetailComponent,
 ];
