@@ -17,33 +17,10 @@
       </mat-card-title>
       <mat-divider></mat-divider>
       <div layout="row">
-          <table class="table">
-            <thead>
-            <tr>
-              <td>
-                DEFINE
-              </td>
-              <td>
-                PREVENT
-              </td>
-              <td>
-                REPAIR
-              </td>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let factor of decision.factors">
-              <td>
-                <p md-col-4> {{factor.define}} </p>
-              </td>
-              <td>
-                <p md-col-4>{{factor.prevent}}</p>
-              </td>
-              <td><p md-col-4> {{factor.repair}} </p>
-              </td>
-            </tr>
-            </tbody>
-          </table>
+        <td-data-table class="full-width"
+          [data]="decision.factors"
+          [columns]="configWidthColumns">
+        </td-data-table>
       </div>
 
       <mat-card-actions>
